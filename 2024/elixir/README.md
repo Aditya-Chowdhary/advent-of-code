@@ -1,3 +1,8 @@
+# Template source
+
+Template taken from https://github.com/jzimbel/adventofcode-elixir-template
+
+
 # Advent of Code Elixir Starter
 
 Template repository for Elixir solutions to [Advent of Code][aoc] puzzles.
