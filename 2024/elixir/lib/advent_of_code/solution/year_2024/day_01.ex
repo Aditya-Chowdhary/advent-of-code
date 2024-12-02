@@ -18,6 +18,21 @@ defmodule AdventOfCode.Solution.Year2024.Day01 do
     # test
   end
 
-  def part2(_input) do
+  def part2(input) do
+    {list1, list2} =
+      input
+      |> String.split("\n", trim: true)
+      |> Enum.map(fn line ->
+        String.split(line)
+        |> Enum.map(&String.to_integer/1)
+        |> List.to_tuple()
+      end)
+      |> Enum.unzip()
+
+    freq = Enum.frequencies(list2)
+    IO.inspect(freq)
+
+    list1
+    |> Enum.reduce(0, fn item, acc -> acc + (item * Map.get(freq, item, 0)) end)
   end
 end
