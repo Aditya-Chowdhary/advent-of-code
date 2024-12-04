@@ -58,6 +58,38 @@ defmodule AdventOfCode.Solution.Year2024.Day04 do
     )
   end
 
-  def part2(_input) do
+  defp take3row([_, _], acc), do: acc
+
+  defp take3row([a | rest], acc) do
+    [b, c | _] = rest
+
+    list =
+      Enum.zip([a, b, c])
+      |> Enum.map(&Tuple.to_list/1)
+
+    x = take3col(list, 0)
+    take3row(rest, acc + x)
+  end
+
+  defp take3col([_, _], acc), do: acc
+
+  defp take3col([a | rest], acc) do
+    [b, c | _] = rest
+
+    if(
+      Regex.match?(
+        ~r/(m.s.a.m.s)|(m.m.a.s.s)|(s.s.a.m.m)|(s.m.a.s.m)/i,
+        Enum.concat([a, b, c]) |> Enum.join("")
+      ),
+      do: take3col(rest, acc + 1),
+      else: take3col(rest, acc)
+    )
+  end
+
+  def part2(input) do
+    input
+    |> String.split("\n", trim: true)
+    |> Enum.map(&String.split(&1, "", trim: true))
+    |> take3row(0)
   end
 end
