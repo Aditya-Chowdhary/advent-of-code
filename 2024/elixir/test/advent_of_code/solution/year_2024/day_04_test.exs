@@ -6,15 +6,24 @@ defmodule AdventOfCode.Solution.Year2024.Day04Test do
   setup do
     [
       input: """
+      MMMSXXMASM
+      MSAMXMSMSA
+      AMXSXMAAMM
+      MSAMASMSMX
+      XMASAMXAMM
+      XXAMMXXAMA
+      SMSMSASXSS
+      SAXAMASAAA
+      MAMMMXMMMM
+      MXMXAXMASX
       """
     ]
   end
 
-  @tag :skip
   test "part1", %{input: input} do
     result = part1(input)
 
-    assert result
+    assert result == 18
   end
 
   @tag :skip
