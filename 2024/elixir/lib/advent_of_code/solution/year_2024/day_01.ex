@@ -30,7 +30,7 @@ defmodule AdventOfCode.Solution.Year2024.Day01 do
       |> Enum.unzip()
 
     freq = Enum.frequencies(list2)
-    IO.inspect(freq)
+    # IO.inspect(freq)
 
     list1
     |> Enum.reduce(0, fn item, acc -> acc + (item * Map.get(freq, item, 0)) end)
